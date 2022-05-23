@@ -1,0 +1,111 @@
+using Gtk 4.0;
+using Adw 1;
+
+// A label, for argument's sake.
+Gtk.Label my_label {
+    styles ["title", "welp"]
+    label: "Hello Joe!";
+    layout {
+        row: 0;
+        column: 1;
+    }
+}
+
+Gtk.Button {
+    label: "Click me pls";
+    clicked => on_button_clicked(my_label) swapped;
+}
+
+Gtk.ComboBoxText {
+    // Comment here
+    items [
+        // Comment here too
+        "Welp",
+        item1: "Item 1",
+        item2: _("Item 2"),
+    ]
+}
+
+Gtk.Dialog {
+    [action response=ok]
+    // Comment
+    Gtk.Button ok_response {}
+}
+
+/* The top level application window. */
+template AppWindow : Adw.ApplicationWindow {
+    default-width: 800;
+    default-height: 600;
+
+    [titlebar]
+    HeaderBar {}
+
+    Gtk.Paned {
+        orientation: horizontal;
+        resize-start-child: true;
+        resize-end-child: true;
+        shrink-start-child: false;
+        shrink-end-child: false;
+        wide-handle: true;
+
+        Gtk.Box {
+            orientation: vertical;
+            hexpand: true;
+            width-request: 200;
+
+            Adw.HeaderBar sidebar-header {
+                show-end-title-buttons: false;
+                title-widget: Adw.WindowTitle {
+                    title: "Available";
+                };
+            }
+
+            Gtk.ListBox available_list {
+                Gtk.Label {
+                    label: 'Royalty';
+                }
+            }
+        }
+
+        Gtk.Box {
+            orientation: vertical;
+            hexpand: true;
+            width-request: 200;
+
+            Adw.HeaderBar main-header {
+                show-start-title-buttons: false;
+                // Nonexistent properties should give errors.
+                wibble: bind active_list.welp;
+                wobble: bind MyWindow.foo inverted;
+                title-widget: Adw.WindowTitle {
+                    title: _("Active");
+                };
+            }
+
+            Gtk.ListBox active_list {
+                Gtk.Label {
+                    label: C_("welp", 'Harmony');
+                }
+            }
+        }
+    }
+}
+
+menu hello_menu {
+    section {
+        label: _("File");
+        // Comment
+        item open_item {
+            label: _("Open");
+            action: "win.open";
+        }
+        item(_("Save"), "win.save", "save") // More comments
+        submenu {
+            label: _("Save As");
+            item {
+                label: _("PDF");
+                action: "win.save_as_pdf";
+            }
+        }
+    }
+}

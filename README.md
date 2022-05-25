@@ -1,7 +1,18 @@
-# Blueprint LSP
+# VSCode Blueprint Language Plugin
 
 VSCode language support for the
 [Blueprint Compiler](https://gitlab.gnome.org/jwestman/blueprint-compiler).
+
+## Features
+
+This extension provides the following language features:
+
+* Validation and completion through the Blueprint language server.
+* Syntax highlighting.
+
+Desired features it does not currently provide:
+
+* Source formatting.
 
 ## Licence
 

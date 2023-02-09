@@ -3,7 +3,7 @@
     "publisher": "bodil",
     "displayName": "Gtk Blueprint",
     "description": "Gtk Blueprint language support.",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license": "LGPL-3.0+",
     "author": {
         "name": "Bodil Stokke",
@@ -28,6 +28,21 @@
     ],
     "main": "./out/extension.js",
     "contributes": {
+        "configuration": {
+            "title": "Blueprint",
+            "properties": {
+                "blueprint-gtk.command": {
+                    "default":"blueprint-compiler",
+                    "type": "string",
+                    "description": "Blueprint executable"
+                },
+                "blueprint-gtk.arguments": {
+                    "default": [],
+                    "type":"array",
+                    "description": "Extra arguments passed to the Blueprint executable"
+                }
+            }
+        },
         "languages": [
             {
                 "id": "blueprint-gtk",

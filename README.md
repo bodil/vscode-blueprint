@@ -7,12 +7,24 @@ VSCode language support for the
 
 This extension provides the following language features:
 
-* Validation and completion through the Blueprint language server.
-* Syntax highlighting.
+-   Validation and completion through the Blueprint language server.
+-   Syntax highlighting.
 
 Desired features it does not currently provide:
 
-* Source formatting.
+-   Source formatting.
+
+> ### For flatpak users
+>
+> If you are using Visual Studio Code from Flatpak, you can use `flatpak-spawn` as the command.
+>
+> ```
+> "blueprint-gtk.command": "flatpak-spawn",
+> "blueprint-gtk.arguments": [
+>     "--host",
+>     "/usr/bin/blueprint-compiler"
+>  ]
+> ```
 
 ## Licence
 
